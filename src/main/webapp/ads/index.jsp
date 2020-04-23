@@ -15,12 +15,23 @@
 </head>
 <body>
 <jsp:include page="../partials/navbar.jsp" />
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Items for Sale</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consectetur consequatur repellendus reprehenderit, sequi ut voluptate.</p>
+    </div>
+</div>
+
 <div class="container">
-    <h1>List Of ADS!!</h1>
-    <p>Title: ${ Ads.getAdsDao }</p>
-<%--    <p>Desc: ${ Ad.description }</p>--%>
-<%--    <jsp:useBean id="link" class="ListAdsDao" />--%>
-<%--    <%=link.generateAds() %>--%>
+    <c:forEach var="ad" items="${ads}">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h2 class="card-title">${ad.title}</h2>
+                <p class="card-text">${ad.description}</p>
+            </div>
+        </div>
+    </c:forEach>
+
 </div>
 </body>
 </html>
