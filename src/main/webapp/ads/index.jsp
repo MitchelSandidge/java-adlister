@@ -17,8 +17,10 @@
 <jsp:include page="../partials/navbar.jsp" />
 <div class="container">
     <h1>List Of ADS!!</h1>
-    <jsp:useBean id="link" class="ListAdsDao" />
-    <%=link.generateAds() %>
+    <p>Title: ${ Ads.getAdsDao }</p>
+<%--    <p>Desc: ${ Ad.description }</p>--%>
+<%--    <jsp:useBean id="link" class="ListAdsDao" />--%>
+<%--    <%=link.generateAds() %>--%>
 </div>
 </body>
 </html>
