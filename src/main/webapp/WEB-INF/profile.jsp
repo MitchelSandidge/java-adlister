@@ -9,8 +9,9 @@
     <jsp:include page="../partials/navbar.jsp" />
 
     <div class="container">
+
         <h1>Viewing your profile.</h1>
-        <h3>Welcome, Admin</h3>
+        <h3>Welcome, ${user}.</h3>
     </div>
 
 </body>
