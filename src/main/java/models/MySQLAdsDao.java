@@ -25,6 +25,9 @@ public class MySQLAdsDao implements Ads {
         );
     }
 
+
+
+    // ********** This lists all of the ads currently in the database **********
     @Override
     public List<Ad> all() {
 
@@ -50,8 +53,37 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
+
+
+    // *********** This inserts a new ad into the database and returns the new "Id" of the ad ************
     @Override
     public Long insert(Ad ad) {
-        return null;
+
+        long newUserId = 0;
+
+        String addNewAdQuery = String.format("INSERT INTO ads (title, description) VALUES ('%s', '%s')",
+
+                ad.getTitle(),
+                ad.getDescription()
+        );
+
+        try {
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(addNewAdQuery, Statement.RETURN_GENERATED_KEYS);
+            ResultSet ks = stmt.getGeneratedKeys();
+
+            if(ks.next()) {
+                newUserId = ks.getLong(1);
+
+                if(newUserId != 0) {
+                    ad.setId(newUserId);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return newUserId;
     }
 }
